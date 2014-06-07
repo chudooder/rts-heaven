@@ -1,5 +1,7 @@
 package chu.engine;
 
+import chu.engine.collision.Hitbox;
+
 public interface Collidable {
 	/**
 	 * Method that deals with any collisions with the entities in
@@ -9,4 +11,5 @@ public interface Collidable {
 	 */
 
 	public void doCollisionWith(Entity entity);
+	public Hitbox getHitbox();
 }

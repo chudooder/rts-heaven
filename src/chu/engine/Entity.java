@@ -1,6 +1,7 @@
 package chu.engine;
 
 import chu.engine.anim.Sprite;
+import chu.engine.collision.Hitbox;
 
 public abstract class Entity implements Comparable<Entity> {
 	

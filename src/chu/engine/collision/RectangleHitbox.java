@@ -1,4 +1,6 @@
-package chu.engine;
+package chu.engine.collision;
+
+import chu.engine.Entity;
 
 public class RectangleHitbox extends Hitbox {
 	

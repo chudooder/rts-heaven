@@ -1,4 +1,6 @@
-package chu.engine;
+package chu.engine.collision;
+
+import chu.engine.Entity;
 
 public class LineHitbox extends Hitbox {
 

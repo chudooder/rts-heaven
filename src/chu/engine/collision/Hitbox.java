@@ -1,4 +1,6 @@
-package chu.engine;
+package chu.engine.collision;
+
+import chu.engine.Entity;
 
 /**
  * Abstract class that determines how an object deals with collisions.

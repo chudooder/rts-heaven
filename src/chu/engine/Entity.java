@@ -23,13 +23,15 @@ public abstract class Entity implements Comparable<Entity> {
 		this.y = y;
 		this.prevX = x;
 		this.prevY = y;
-		sprite = new Sprite();
 		willBeRemoved = false;
 		solid = false;
 		width = 0;
 		height = 0;
 	}
 	
+	public void init() {
+	
+	}
 	
 	public void onStep() {
 		if(sprite != null) sprite.update();
@@ -46,7 +48,7 @@ public abstract class Entity implements Comparable<Entity> {
 	}
 	
 	public void render() {
-		sprite.render(x, y, renderDepth);
+		if(sprite != null) sprite.render(x, y, renderDepth);
 	}
 	
 	//Called when the entity is removed from the stage.

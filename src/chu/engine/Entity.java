@@ -9,11 +9,10 @@ public abstract class Entity implements Comparable<Entity> {
 	public float y;
 	public float width;
 	public float height;
-	public float prevX;
-	public float prevY;
 	public int updatePriority;
 	public float renderDepth;
 	public Sprite sprite;
+	public Hitbox hitbox;
 	public Stage stage;
 	public boolean willBeRemoved;
 	public boolean solid;
@@ -21,8 +20,6 @@ public abstract class Entity implements Comparable<Entity> {
 	public Entity(float x, float y) {
 		this.x = x;
 		this.y = y;
-		this.prevX = x;
-		this.prevY = y;
 		willBeRemoved = false;
 		solid = false;
 		width = 0;
@@ -35,8 +32,7 @@ public abstract class Entity implements Comparable<Entity> {
 	
 	public void onStep() {
 		if(sprite != null) sprite.update();
-		prevX = x;
-		prevY = y;
+		if(hitbox != null) hitbox.setLocation(x, y);
 	}
 	
 	public void beginStep() {

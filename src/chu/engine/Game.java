@@ -55,7 +55,6 @@ public abstract class Game {
 			Display.setDisplayMode(new DisplayMode(windowWidth, windowHeight));
 			Display.create();
 			Display.setTitle(name);
-			Display.setResizable(true);
 			Keyboard.create();
 			Keyboard.enableRepeatEvents(true);
 			Mouse.create();
@@ -79,7 +78,7 @@ public abstract class Game {
 		glViewport(0, 0, windowWidth, windowHeight);
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		glOrtho(0, windowWidth/scaleX, windowHeight/scaleY, 0, 1, -1);		//It's basically a camera
+		glOrtho(0, windowWidth/scaleX, 0, windowHeight/scaleY, 1, -1);		//It's basically a camera
 		glMatrixMode(GL_MODELVIEW);
 		
 		keys = new ArrayList<KeyboardEvent>();

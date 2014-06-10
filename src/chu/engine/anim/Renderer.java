@@ -26,7 +26,6 @@ import static org.lwjgl.opengl.GL11.glTranslatef;
 import static org.lwjgl.opengl.GL11.glVertex3f;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
@@ -36,12 +35,9 @@ import org.lwjgl.opengl.ARBFragmentShader;
 import org.lwjgl.opengl.ARBShaderObjects;
 import org.lwjgl.opengl.ARBVertexShader;
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
-import org.lwjgl.opengl.GL13;
 import org.lwjgl.opengl.GL20;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.opengl.Texture;
-import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.ResourceLoader;
 
 import chu.engine.Game;
@@ -65,7 +61,6 @@ public class Renderer {
 		clip = null;
 		color = Color.white;
 		programs.put("default", createProgram("default", "default"));
-		
 	}
 	
 	public static void render(Texture t, float x, float y, float depth) {
@@ -152,13 +147,13 @@ public class Renderer {
 		// draw quad
 		glBegin(GL_QUADS);
 		glTexCoord2f(txi, tyi);
-		glVertex3f(x0, y0, depth);
-		glTexCoord2f(txf, tyi);
-		glVertex3f(x1, y0, depth);
-		glTexCoord2f(txf, tyf);
-		glVertex3f(x1, y1, depth);
-		glTexCoord2f(txi, tyf);
 		glVertex3f(x0, y1, depth);
+		glTexCoord2f(txf, tyi);
+		glVertex3f(x1, y1, depth);
+		glTexCoord2f(txf, tyf);
+		glVertex3f(x1, y0, depth);
+		glTexCoord2f(txi, tyf);
+		glVertex3f(x0, y0, depth);
 		glEnd();
 
 		glPopMatrix();
@@ -461,6 +456,22 @@ public class Renderer {
     static class RendererState {
 		Color color;
 		RectClip clip;
+	}
+
+	public static void drawCircle(float x, float y, float radius, int points, boolean filled,
+			Color color) {
+		float x1 = x + radius;
+		float y1 = y;
+		float x2, y2;
+		double interval = 2*Math.PI/points;
+		for(double angle = interval; angle <= 2*Math.PI; angle += interval) {
+			x2 = x + (float) (radius * Math.cos(angle));
+			y2 = y + (float) (radius * Math.sin(angle));
+			drawLine(x1, y1, x2, y2, 1, 0.0f, color, color);
+			x1 = x2;
+			y1 = y2;
+		}
+		drawLine(x1, y1, x+radius, y, 1, 0.0f, color, color);
 	}
     
 }

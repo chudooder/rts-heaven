@@ -5,28 +5,10 @@ package io;
  * @author Shawn
  *
  */
-public abstract class Command {
-	private Unit unit;
-	
-	public Command() {
-		unit = null;
-	}
-	
-	public Command(Unit unit) {
-		this.unit = unit;
-	}
-	
+public interface Command {
 	/**
-	 * Sets the command's unit.
+	 * Performs an action on the given unit.
 	 */
-	public void setUnit(Unit u) {
-		this.unit = u;
-	}
-	
-	/**
-	 * Performs an action on the command's unit.
-	 */
-	public abstract void doCommand();
-	
+	public void performAction(Unit unit);
 	
 }

@@ -1,0 +1,7 @@
+# Default medium font
+define:nums
+nums
+0123456789+-
+12
+1
+666666666676

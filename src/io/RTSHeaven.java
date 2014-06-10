@@ -21,7 +21,9 @@ public class RTSHeaven extends Game {
 	public Stage currentStage;
 	
 	public static void main(String[] args) {
-		RTSHeaven game = new RTSHeaven();
+		RTSHeaven game = new RTSHeaven();		
+		scaleX = 1;
+		scaleY = 1;
 		game.init(1280, 720, "Something");
 		game.loop();
 	}

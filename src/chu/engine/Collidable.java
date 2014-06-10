@@ -11,5 +11,4 @@ public interface Collidable {
 	 */
 
 	public void doCollisionWith(Entity entity);
-	public Hitbox getHitbox();
 }

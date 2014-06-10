@@ -22,7 +22,7 @@ public class QuadTree {
 	private static int MAX_LEVELS = 5;
 	
 	private int level;
-	private List<Collidable> entities;
+	private List<Entity> entities;
 	private Rectangle bounds;
 	private QuadTree[] nodes;
 	
@@ -67,8 +67,8 @@ public class QuadTree {
 	 * @param entity The entity to fit.
 	 * @return The quadrant the entity fits into.
 	 */
-	private int getIndex(Collidable entity) {
-		Shape shape = entity.getHitbox().getShape();
+	private int getIndex(Entity entity) {
+		Shape shape = entity.hitbox.getShape();
 		float midX = bounds.getX() + bounds.getWidth()/2;
 		float midY = bounds.getY() + bounds.getHeight()/2;
 		boolean topQuad = shape.getMaxY() + shape.getY() < midY;
@@ -94,7 +94,7 @@ public class QuadTree {
 	 * @param e
 	 */
 	
-	public void insert(Collidable e) {
+	public void insert(Entity e) {
 		if(nodes[0] != null) {
 			int index = getIndex(e);
 			if(index != -1) {
@@ -125,7 +125,7 @@ public class QuadTree {
 	 * @param object The object to check for collision.
 	 * @return The list of objects that could potentially collide with the given object.
 	 */
-	public List<Collidable> retrieve(List<Collidable> list, Collidable object) {
+	public List<Entity> retrieve(List<Entity> list, Entity object) {
 		int index = getIndex(object);
 		if(index != -1 && nodes[0] != null) {
 			nodes[index].retrieve(list, object);

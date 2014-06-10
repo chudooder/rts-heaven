@@ -1,10 +1,10 @@
 package chu.engine.collision;
 
-import org.newdawn.slick.geom.Shape;
+import org.newdawn.slick.geom.*;
 
 public class Hitbox {
-	private Shape shape;
 	
+	private Shape shape;
 	
 	public Hitbox(Shape shape) {
 		this.shape = shape;
@@ -15,6 +15,11 @@ public class Hitbox {
 	 */
 	public Shape getShape() {
 		return shape;
+	}
+	
+	public void setLocation(float x, float y) {
+		shape.setX(x);
+		shape.setY(y);
 	}
 	
 	
